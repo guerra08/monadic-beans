@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6340abbd-a895-4c2c-b7dd-23b6a6b5aa65" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="6340abbd-a895-4c2c-b7dd-23b6a6b5aa65" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +38,19 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.EitherTests.sample">
+  <component name="RunManager" selected="JAR Application.monadic-beans-1.0-SNAPSHOT.jar">
+    <configuration name="All in monadic-beans" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="monadic-beans" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EitherTests.sample" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="monadic-beans" />
       <extension name="coverage">
@@ -74,8 +81,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="monadic-beans-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/monadic-beans-1.0-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.monadic-beans-1.0-SNAPSHOT.jar" />
+        <item itemvalue="JUnit.All in monadic-beans" />
         <item itemvalue="JUnit.EitherTests.sample" />
         <item itemvalue="JUnit.monads in monadic-beans" />
       </list>
@@ -89,8 +102,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654624449107</updated>
-      <workItem from="1654624450444" duration="4548000" />
+      <workItem from="1654624450444" duration="4987000" />
+      <workItem from="1654664780506" duration="632000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1654636560950</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654636560950</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,5 +128,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>

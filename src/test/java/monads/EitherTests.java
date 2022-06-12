@@ -60,21 +60,28 @@ public class EitherTests {
     void shouldReturnNull() {
 
         Either<String, String> error = Either.left("Ooops!");
+        Either<String, String> ok = Either.right("value");
 
-        String result = error.orNull();
+        String errorResult = error.rightOrNull();
+        String okResult = ok.leftOrNull();
 
-        Assertions.assertNull(result);
+        Assertions.assertNull(errorResult);
+        Assertions.assertNull(okResult);
 
     }
 
     @Test
     void shouldReturnValue() {
 
-        Either<String, String> error = Either.right("A value");
+        Either<String, String> ok = Either.right("A value");
+        Either<String, String> error = Either.left("An error");
 
-        String result = error.orNull();
+        String okResult = ok.rightOrNull();
+        String errorResult = error.leftOrNull();
 
-        Assertions.assertEquals("A value", result);
+        Assertions.assertEquals("A value", okResult);
+
+        Assertions.assertEquals("An error", errorResult);
 
     }
 

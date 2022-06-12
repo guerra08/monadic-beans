@@ -43,11 +43,18 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
     <T, RR extends T> T map(Function<R, RR> mapper);
 
     /**
-     * Returns the value if Right, or null if Left
+     * Returns the value if Right, otherwise returns null
      *
      * @return @Nullable R
      */
-    R orNull();
+    R rightOrNull();
+
+    /**
+     * Returns the left value if Left, otherwise returns null
+     *
+     * @return @Nullable L
+     */
+    L leftOrNull();
 
     record Left<L, R>(L error) implements Either<L, R> {
 
@@ -72,8 +79,13 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
         }
 
         @Override
-        public R orNull() {
+        public R rightOrNull() {
             return null;
+        }
+
+        @Override
+        public L leftOrNull() {
+            return error;
         }
 
     }
@@ -101,8 +113,13 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
         }
 
         @Override
-        public R orNull() {
+        public R rightOrNull() {
             return value;
+        }
+
+        @Override
+        public L leftOrNull() {
+            return null;
         }
 
     }
