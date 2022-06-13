@@ -4,8 +4,6 @@ import com.guerra08.monads.Either;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
 public class EitherTests {
 
     @Test
@@ -62,7 +60,7 @@ public class EitherTests {
         Either<String, String> error = Either.left("Ooops!");
         Either<String, String> ok = Either.right("value");
 
-        String errorResult = error.rightOrNull();
+        String errorResult = error.orNull();
         String okResult = ok.leftOrNull();
 
         Assertions.assertNull(errorResult);
@@ -76,12 +74,26 @@ public class EitherTests {
         Either<String, String> ok = Either.right("A value");
         Either<String, String> error = Either.left("An error");
 
-        String okResult = ok.rightOrNull();
+        String okResult = ok.orNull();
         String errorResult = error.leftOrNull();
 
         Assertions.assertEquals("A value", okResult);
 
         Assertions.assertEquals("An error", errorResult);
+
+    }
+
+    @Test
+    void orElse_shouldReturnValue() {
+      
+        Either<String, Integer> ok = Either.right(10);
+        Either<String, Integer> err = Either.left("Error");
+
+        Integer okResult = ok.orElse(() -> 99);
+        Integer errResult = err.orElse(() -> 99);
+
+        Assertions.assertEquals(10, okResult);
+        Assertions.assertEquals(99, errResult);
 
     }
 

@@ -1,6 +1,7 @@
 package com.guerra08.monads;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * Either monad, used to represent a result that can be either types.
@@ -47,7 +48,7 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
      *
      * @return @Nullable R
      */
-    R rightOrNull();
+    R orNull();
 
     /**
      * Returns the left value if Left, otherwise returns null
@@ -55,6 +56,13 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
      * @return @Nullable L
      */
     L leftOrNull();
+
+    /**
+      * Returns the right value if Right, otherwise maps and returns another Value
+      * 
+      * @returns {@link Record}
+      */
+    R orElse(Supplier <R> supplier);
 
     record Left<L, R>(L error) implements Either<L, R> {
 
@@ -79,7 +87,7 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
         }
 
         @Override
-        public R rightOrNull() {
+        public R orNull() {
             return null;
         }
 
@@ -88,6 +96,10 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
             return error;
         }
 
+        @Override
+        public R orElse(Supplier<R> supplier) {
+           return supplier.get();
+        }
     }
 
     record Right<L, R>(R value) implements Either<L, R> {
@@ -113,13 +125,18 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
         }
 
         @Override
-        public R rightOrNull() {
+        public R orNull() {
             return value;
         }
 
         @Override
         public L leftOrNull() {
             return null;
+        }
+
+        @Override
+        public R orElse(Supplier<R> supplier) {
+          return value;
         }
 
     }
