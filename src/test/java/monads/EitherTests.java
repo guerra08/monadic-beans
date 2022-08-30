@@ -7,21 +7,21 @@ import org.junit.jupiter.api.Test;
 public class EitherTests {
 
     @Test
-    void shouldBeLeft() {
+    void left_shouldBuildLeftEither() {
         Either<String, String> example = Either.left("Error");
 
         Assertions.assertTrue(example.isLeft());
     }
 
     @Test
-    void shouldBeRight() {
+    void right_shouldBuildRightEither() {
         Either<String, String> example = Either.right("Value");
 
         Assertions.assertTrue(example.isRight());
     }
 
     @Test
-    void shouldMatchIntoHelloWorldString() {
+    void match_shouldMatchIntoHelloWorldValue() {
 
         Either<String, String> example = Either.right("A value");
 
@@ -35,7 +35,7 @@ public class EitherTests {
     }
 
     @Test
-    void shouldThrowRuntimeExceptionWhenMapOnLeft() {
+    void map_shouldThrowRuntimeExceptionWhenMapOnLeft() {
 
         Either<String, String> example = Either.left("Error");
 
@@ -44,7 +44,7 @@ public class EitherTests {
     }
 
     @Test
-    void shouldReturnMappedValue() {
+    void map_shouldReturnRightMappedValue() {
 
         Either<String, String> example = Either.right("value");
 
@@ -55,45 +55,46 @@ public class EitherTests {
     }
 
     @Test
-    void shouldReturnNull() {
+    void orNull_shouldReturnNullOnLeftEither() {
 
         Either<String, String> error = Either.left("Ooops!");
-        Either<String, String> ok = Either.right("value");
 
         String errorResult = error.orNull();
-        String okResult = ok.leftOrNull();
 
         Assertions.assertNull(errorResult);
-        Assertions.assertNull(okResult);
 
     }
 
     @Test
-    void shouldReturnValue() {
+    void orNull_shouldReturnRightValueOnRightEither() {
 
-        Either<String, String> ok = Either.right("A value");
-        Either<String, String> error = Either.left("An error");
+        Either<String, String> ok = Either.right("value");
 
         String okResult = ok.orNull();
-        String errorResult = error.leftOrNull();
 
-        Assertions.assertEquals("A value", okResult);
-
-        Assertions.assertEquals("An error", errorResult);
+        Assertions.assertEquals("value", okResult);
 
     }
 
     @Test
-    void orElse_shouldReturnValue() {
+    void orElse_shouldReturnMappedValueOnLeftEither() {
       
-        Either<String, Integer> ok = Either.right(10);
-        Either<String, Integer> err = Either.left("Error");
+        Either<String, Integer> error = Either.left("An error");
 
-        Integer okResult = ok.orElse(() -> 99);
-        Integer errResult = err.orElse(() -> 99);
+        Integer orElseResult = error.orElse(() -> 77);
 
-        Assertions.assertEquals(10, okResult);
-        Assertions.assertEquals(99, errResult);
+        Assertions.assertEquals(77, orElseResult);
+
+    }
+
+    @Test
+    void orElse_shouldReturnValueOnRightEither() {
+
+        Either<String, Integer> error = Either.right(66);
+
+        Integer orElseResult = error.orElse(() -> 77);
+
+        Assertions.assertEquals(66, orElseResult);
 
     }
 

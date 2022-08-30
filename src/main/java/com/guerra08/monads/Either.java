@@ -51,16 +51,9 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
     R orNull();
 
     /**
-     * Returns the left value if Left, otherwise returns null
-     *
-     * @return @Nullable L
-     */
-    L leftOrNull();
-
-    /**
       * Returns the right value if Right, otherwise maps and returns another Value
       * 
-      * @returns {@link Record}
+      * @return {@link Record}
       */
     R orElse(Supplier <R> supplier);
 
@@ -89,11 +82,6 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
         @Override
         public R orNull() {
             return null;
-        }
-
-        @Override
-        public L leftOrNull() {
-            return error;
         }
 
         @Override
@@ -127,11 +115,6 @@ public sealed interface Either<L, R> permits Either.Left, Either.Right {
         @Override
         public R orNull() {
             return value;
-        }
-
-        @Override
-        public L leftOrNull() {
-            return null;
         }
 
         @Override

@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6340abbd-a895-4c2c-b7dd-23b6a6b5aa65" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/guerra08/monads/Either.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/guerra08/monads/Either.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/monads/EitherTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/monads/EitherTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/monads/ResultTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/monads/ResultTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +45,26 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
   }
 }</component>
-  <component name="RunManager" selected="JAR Application.monadic-beans-1.0-SNAPSHOT.jar">
+  <component name="RunManager" selected="JUnit.ResultTests">
     <configuration name="All in monadic-beans" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="monadic-beans" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EitherTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="monadic-beans" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="monads.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="monads" />
+      <option name="MAIN_CLASS_NAME" value="monads.EitherTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -67,7 +85,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="monads in monadic-beans" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ResultTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="monadic-beans" />
       <extension name="coverage">
         <pattern>
@@ -76,7 +94,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="monads" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="monads.ResultTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -87,10 +106,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ResultTests" />
+        <item itemvalue="JUnit.EitherTests" />
         <item itemvalue="JAR Application.monadic-beans-1.0-SNAPSHOT.jar" />
         <item itemvalue="JUnit.All in monadic-beans" />
         <item itemvalue="JUnit.EitherTests.sample" />
-        <item itemvalue="JUnit.monads in monadic-beans" />
       </list>
     </recent_temporary>
   </component>
@@ -105,6 +125,7 @@
       <workItem from="1654624450444" duration="4987000" />
       <workItem from="1654664780506" duration="632000" />
       <workItem from="1655082175805" duration="20000" />
+      <workItem from="1661902453257" duration="997000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1654636560950</created>

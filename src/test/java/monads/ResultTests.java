@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class ResultTests {
 
     @Test
-    void shouldBeErrorResult() {
+    void error_shouldBuildErrorResult() {
 
         Result<String> result = Result.error(new IllegalArgumentException("An error happened."));
 
@@ -16,7 +16,7 @@ public class ResultTests {
     }
 
     @Test
-    void shouldBeOkResult() {
+    void ok_shouldBuildOkResult() {
 
         Result<String> result = Result.ok("Ok!");
 
@@ -25,7 +25,7 @@ public class ResultTests {
     }
 
     @Test
-    void shouldMatchToString() {
+    void match_shouldMatchToString() {
 
         Result<String> result = Result.ok("Ok!");
 
