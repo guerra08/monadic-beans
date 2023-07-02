@@ -22,7 +22,6 @@ public class EitherTests {
 
     @Test
     void match_shouldMatchIntoHelloWorldValue() {
-
         Either<String, String> example = Either.right("A value");
 
         String result = example.match(
@@ -31,71 +30,85 @@ public class EitherTests {
         );
 
         Assertions.assertEquals("Hello World", result);
+    }
 
+    @Test
+    void match_shouldMatchIntoErrorValue() {
+        Either<String, String> example = Either.left("This is an error. ");
+
+        String result = example.match(
+                left -> "An error",
+                right -> "Hello World"
+        );
+
+        Assertions.assertEquals("An error", result);
     }
 
     @Test
     void map_shouldThrowRuntimeExceptionWhenMapOnLeft() {
-
         Either<String, String> example = Either.left("Error");
 
         Assertions.assertThrows(RuntimeException.class, () -> example.map(String::toUpperCase));
-
     }
 
     @Test
     void map_shouldReturnRightMappedValue() {
-
         Either<String, String> example = Either.right("value");
 
         String result = example.map(String::toUpperCase);
 
         Assertions.assertEquals("VALUE", result);
-
     }
 
     @Test
     void orNull_shouldReturnNullOnLeftEither() {
-
         Either<String, String> error = Either.left("Ooops!");
 
         String errorResult = error.orNull();
 
         Assertions.assertNull(errorResult);
-
     }
 
     @Test
     void orNull_shouldReturnRightValueOnRightEither() {
-
         Either<String, String> ok = Either.right("value");
 
         String okResult = ok.orNull();
 
         Assertions.assertEquals("value", okResult);
-
     }
 
     @Test
     void orElse_shouldReturnMappedValueOnLeftEither() {
-      
         Either<String, Integer> error = Either.left("An error");
 
         Integer orElseResult = error.orElse(() -> 77);
 
         Assertions.assertEquals(77, orElseResult);
-
     }
 
     @Test
     void orElse_shouldReturnValueOnRightEither() {
-
         Either<String, Integer> error = Either.right(66);
 
         Integer orElseResult = error.orElse(() -> 77);
 
         Assertions.assertEquals(66, orElseResult);
-
     }
 
+    @Test
+    void isLeft_shouldReturnTrueIfLeft() {
+        Either<String, Integer> error = Either.left("Unable to compute");
+
+        Assertions.assertFalse(error.isRight());
+        Assertions.assertTrue(error.isLeft());
+    }
+
+    @Test
+    void isRight_shouldReturnTrueIfRight() {
+        Either<String, Integer> error = Either.right(10);
+
+        Assertions.assertTrue(error.isRight());
+        Assertions.assertFalse(error.isLeft());
+    }
 }

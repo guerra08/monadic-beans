@@ -8,25 +8,20 @@ public class ResultTests {
 
     @Test
     void error_shouldBuildErrorResult() {
-
         Result<String> result = Result.error(new IllegalArgumentException("An error happened."));
 
         Assertions.assertTrue(result.isError());
-
     }
 
     @Test
     void ok_shouldBuildOkResult() {
-
         Result<String> result = Result.ok("Ok!");
 
         Assertions.assertTrue(result.isOk());
-
     }
 
     @Test
     void match_shouldMatchToString() {
-
         Result<String> result = Result.ok("Ok!");
 
         String value = result.match(
@@ -35,7 +30,6 @@ public class ResultTests {
         );
 
         Assertions.assertEquals("Ok!", value);
-
     }
 
 }
