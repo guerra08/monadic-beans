@@ -32,4 +32,17 @@ public class ResultTests {
         Assertions.assertEquals("Ok!", value);
     }
 
+    @Test
+    void of_shouldReturnOkFromSuccessfulSupplier() {
+        Result<String> result = Result.of(() -> "Hello there!");
+
+        Assertions.assertTrue(result.isOk());
+    }
+
+    @Test
+    void of_shouldReturnErrorFromFailedSupplier() {
+        Result<Integer> result = Result.of(() -> { throw new RuntimeException(); });
+
+        Assertions.assertTrue(result.isError());
+    }
 }

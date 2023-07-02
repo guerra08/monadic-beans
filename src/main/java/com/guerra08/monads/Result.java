@@ -1,6 +1,7 @@
 package com.guerra08.monads;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * Result monad, which encapsulates a value of type T, or a Throwable if result of computation is an error.
@@ -82,6 +83,20 @@ public sealed interface Result<T> permits Result.Ok, Result.Error {
      */
     static <T> Error<T> error(Throwable t) {
         return new Error<>(t);
+    }
+
+    /**
+     * Creates a Result from a given Supplier
+     * @param supplier Supplier of a given type
+     * @return Result of Ok or Error from Supplier
+     * @param <T> Type
+     */
+    static <T> Result<T> of(Supplier<T> supplier) {
+        try {
+            return new Ok<>(supplier.get());
+        } catch (Throwable t) {
+            return new Error<>(t);
+        }
     }
 
 }
