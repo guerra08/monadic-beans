@@ -1,8 +1,9 @@
 package monads;
 
 import com.guerra08.monads.Result;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ResultTests {
 
@@ -10,14 +11,14 @@ public class ResultTests {
     void error_shouldBuildErrorResult() {
         Result<String> result = Result.error(new IllegalArgumentException("An error happened."));
 
-        Assertions.assertTrue(result.isError());
+        assertTrue(result.isError());
     }
 
     @Test
     void ok_shouldBuildOkResult() {
         Result<String> result = Result.ok("Ok!");
 
-        Assertions.assertTrue(result.isOk());
+        assertTrue(result.isOk());
     }
 
     @Test
@@ -29,20 +30,20 @@ public class ResultTests {
                 Throwable::getMessage
         );
 
-        Assertions.assertEquals("Ok!", value);
+        assertEquals("Ok!", value);
     }
 
     @Test
     void of_shouldReturnOkFromSuccessfulSupplier() {
         Result<String> result = Result.of(() -> "Hello there!");
 
-        Assertions.assertTrue(result.isOk());
+        assertTrue(result.isOk());
     }
 
     @Test
     void of_shouldReturnErrorFromFailedSupplier() {
         Result<Integer> result = Result.of(() -> { throw new RuntimeException(); });
 
-        Assertions.assertTrue(result.isError());
+        assertTrue(result.isError());
     }
 }

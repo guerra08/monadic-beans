@@ -1,8 +1,9 @@
 package monads;
 
 import com.guerra08.monads.Either;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EitherTests {
 
@@ -10,14 +11,14 @@ public class EitherTests {
     void left_shouldBuildLeftEither() {
         Either<String, String> example = Either.left("Error");
 
-        Assertions.assertTrue(example.isLeft());
+        assertTrue(example.isLeft());
     }
 
     @Test
     void right_shouldBuildRightEither() {
         Either<String, String> example = Either.right("Value");
 
-        Assertions.assertTrue(example.isRight());
+        assertTrue(example.isRight());
     }
 
     @Test
@@ -29,7 +30,7 @@ public class EitherTests {
                 right -> "Hello World"
         );
 
-        Assertions.assertEquals("Hello World", result);
+        assertEquals("Hello World", result);
     }
 
     @Test
@@ -41,14 +42,14 @@ public class EitherTests {
                 right -> "Hello World"
         );
 
-        Assertions.assertEquals("An error", result);
+        assertEquals("An error", result);
     }
 
     @Test
     void map_shouldThrowRuntimeExceptionWhenMapOnLeft() {
         Either<String, String> example = Either.left("Error");
 
-        Assertions.assertThrows(RuntimeException.class, () -> example.map(String::toUpperCase));
+        assertThrows(RuntimeException.class, () -> example.map(String::toUpperCase));
     }
 
     @Test
@@ -57,7 +58,7 @@ public class EitherTests {
 
         String result = example.map(String::toUpperCase);
 
-        Assertions.assertEquals("VALUE", result);
+        assertEquals("VALUE", result);
     }
 
     @Test
@@ -66,7 +67,7 @@ public class EitherTests {
 
         String errorResult = error.orNull();
 
-        Assertions.assertNull(errorResult);
+        assertNull(errorResult);
     }
 
     @Test
@@ -75,7 +76,7 @@ public class EitherTests {
 
         String okResult = ok.orNull();
 
-        Assertions.assertEquals("value", okResult);
+        assertEquals("value", okResult);
     }
 
     @Test
@@ -84,7 +85,7 @@ public class EitherTests {
 
         Integer orElseResult = error.orElse(() -> 77);
 
-        Assertions.assertEquals(77, orElseResult);
+        assertEquals(77, orElseResult);
     }
 
     @Test
@@ -93,22 +94,22 @@ public class EitherTests {
 
         Integer orElseResult = error.orElse(() -> 77);
 
-        Assertions.assertEquals(66, orElseResult);
+        assertEquals(66, orElseResult);
     }
 
     @Test
     void isLeft_shouldReturnTrueIfLeft() {
         Either<String, Integer> error = Either.left("Unable to compute");
 
-        Assertions.assertFalse(error.isRight());
-        Assertions.assertTrue(error.isLeft());
+        assertFalse(error.isRight());
+        assertTrue(error.isLeft());
     }
 
     @Test
     void isRight_shouldReturnTrueIfRight() {
         Either<String, Integer> error = Either.right(10);
 
-        Assertions.assertTrue(error.isRight());
-        Assertions.assertFalse(error.isLeft());
+        assertTrue(error.isRight());
+        assertFalse(error.isLeft());
     }
 }
