@@ -68,6 +68,32 @@ public sealed interface Result<T> permits Result.Ok, Result.Error {
     }
 
     /**
+     * Applies a mapping function if Result is of type Ok
+     * @param mapper The mapper function
+     * @return Result of the mapping operation
+     */
+    default <U> Result<U> map(Function<T, U> mapper) {
+        if (this.isOk()) {
+            // If mapper throws, we return an error
+            try {
+                return Result.ok(mapper.apply(((Ok<T>) this).value()));
+            } catch (Exception e) {
+                return Result.error(e);
+            }
+        }
+        return Result.error(((Error<T>) this).t());
+    }
+
+    /**
+     * Recovers by using a function from throwable to value T
+     * @param recoveryFunction Function for recovery scenario
+     * @return Result of recovery
+     */
+    default T recover(Function<Throwable, T> recoveryFunction) {
+        return isOk() ? ((Ok<T>) this).value() : recoveryFunction.apply(((Error<T>) this).t());
+    }
+
+    /**
      * Creates a new instance of Ok type
      * @param value <T> Ok value
      * @return Ok instance
